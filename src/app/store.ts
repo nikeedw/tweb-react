@@ -1,8 +1,11 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { configureStore } from "@reduxjs/toolkit"
+import { api } from "./services/api"
 
   export const store = configureStore({
-    reducer: {},
+    reducer: {
+			[api.reducerPath]: api.reducer
+		},
   })
 
 // Infer the type of `store`
