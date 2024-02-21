@@ -14,6 +14,7 @@ import CurrentPost from "./pages/current-post"
 import UserProfile from "./pages/user-profile"
 import Followers from "./pages/followers"
 import Following from "./pages/following"
+import AuthGuard from "./features/user/authGuard"
 
 const container = document.getElementById("root")
 
@@ -58,7 +59,9 @@ if (container) {
       <Provider store={store}>
 				<NextUIProvider>
 					<ThemeProvider>
-						<RouterProvider router={router}/>
+						<AuthGuard>
+							<RouterProvider router={router}/>
+						</AuthGuard>
 					</ThemeProvider>
 				</NextUIProvider>
       </Provider>
