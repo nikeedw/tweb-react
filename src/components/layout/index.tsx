@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Header from '../header'
+import { Header } from '../header'
 import Container from '../container'
 import Navbar from '../navbar'
 import { Outlet, useNavigate } from 'react-router-dom'
