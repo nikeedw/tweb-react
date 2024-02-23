@@ -1,4 +1,3 @@
-import React from 'react'
 import { useGetAllPostsQuery } from '../../app/services/postsApi'
 import { CreatePost } from '../../components/create-post';
 import { Card } from '../../components/card';
