@@ -126,7 +126,7 @@ const UserProfile = () => {
 					</div>
 				</Card>
 			</div>
-			<EditProfile isOpen={isOpen} onClose={onClose} user={data} />
+			<EditProfile isOpen={isOpen} onClose={handleClose} user={data} />
 		</>
 	)
 }
