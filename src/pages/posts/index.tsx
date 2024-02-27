@@ -20,20 +20,20 @@ const Posts = () => {
 						comments,
 						likes,
 						likedByUser,
-						createdAt
+						createdAt,
 					}) => (
 						<Card
 							key={id}
-							avatarUrl={author.avatarUrl ?? ''}
+							avatarUrl={author.avatarUrl ?? ""}
 							content={content}
-							name={author.name ?? ''}
+							name={author.name ?? ""}
 							likesCount={likes.length}
 							commentsCount={comments.length}
 							authorId={authorId}
 							id={id}
 							likedByUser={likedByUser}
 							createdAt={createdAt}
-							cardFor='post'
+							cardFor="post"
 						/>
 					)) : null
 			}
