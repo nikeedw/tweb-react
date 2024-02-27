@@ -21,10 +21,11 @@ import { CiEdit } from "react-icons/ci"
 import { formatToClientDate } from "../../utils/format-to-client-date"
 import ProfileInfo from "../../components/profile-info"
 import CountInfo from "../../components/count-info"
+import EditProfile from "../../components/edit-profile"
 
 const UserProfile = () => {
 	const { id } = useParams<{ id: string }>()
-	const { isOpen, onOpen, onClose } = useDisclosure()
+	const { isOpen, onOpen, onClose } = useDisclosure();
 	const currentUser = useSelector(selectCurrent)
 	const { data } = useGetUserByIdQuery(id ?? "")
 	const [followUser] = useFollowUserMutation()
@@ -125,6 +126,7 @@ const UserProfile = () => {
 					</div>
 				</Card>
 			</div>
+			<EditProfile isOpen={isOpen} onClose={onClose} user={data} />
 		</>
 	)
 }
