@@ -1,11 +1,14 @@
 import {
 	Card as NextUiCard,
 	CardHeader,
-	Spinner,
 	CardBody,
 	CardFooter,
 } from "@nextui-org/react"
-import { useNavigate, Link } from "react-router-dom"
+import MetaInfo from "../meta-info"
+import Typography from "../typography"
+import User from "../user"
+import { Link, useNavigate } from "react-router-dom"
+import { FaRegComment } from "react-icons/fa6"
 import {
 	useUnlikePostMutation,
 	useLikePostMutation,
@@ -15,19 +18,16 @@ import {
 	useLazyGetAllPostsQuery,
 	useLazyGetPostByIdQuery,
 } from "../../app/services/postsApi"
+import { FcDislike } from "react-icons/fc"
+import { MdOutlineFavoriteBorder } from "react-icons/md"
 import { formatToClientDate } from "../../utils/format-to-client-date"
+import { RiDeleteBinLine } from "react-icons/ri"
 import { useSelector } from "react-redux"
 import { selectCurrent } from "../../features/user/userSlice"
 import { useDeleteCommentMutation } from "../../app/services/commentsApi"
-import { useState } from "react"
-import User from "../user"
-import { RiDeleteBinLine } from "react-icons/ri"
-import Typography from "../typography"
-import MetaInfo from "../meta-info"
-import { FcDislike } from "react-icons/fc"
-import { MdOutlineFavoriteBorder } from "react-icons/md"
-import { FaRegComment } from "react-icons/fa"
+import { Spinner } from "@nextui-org/react"
 import { ErrorMessage } from "../error-message"
+import { useState } from "react"
 import { hasErrorField } from "../../utils/has-error-field"
 
 type Props = {
@@ -89,7 +89,7 @@ export const Card = ({
 				? await unlikePost(id).unwrap()
 				: await likePost({ postId: id }).unwrap()
 
-				await triggerGetPostById(id).unwrap();
+			await refetchPosts()
 		} catch (err) {
 			if (hasErrorField(err)) {
 				setError(err.data.error)
